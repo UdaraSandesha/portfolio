@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ArrowUpRight, Pause, Play, Quote } from 'lucide-react';
 import {
@@ -116,6 +116,89 @@ function QuoteCard({
 }
 export function Recommendations() {
   const [paused, setPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const windowRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<{
+    startX: number;
+    startScrollLeft: number;
+    hasMoved: boolean;
+  } | null>(null);
+
+  useEffect(() => {
+    if (paused || isDragging || isHovered) return;
+
+    const marquee = windowRef.current;
+    if (!marquee || window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+      return;
+
+    let frameId = 0;
+    let lastTimestamp = 0;
+
+    const move = (timestamp: number) => {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const elapsed = Math.min(timestamp - lastTimestamp, 40);
+      lastTimestamp = timestamp;
+      const firstGroup = marquee.firstElementChild?.firstElementChild;
+      const loopWidth = firstGroup?.getBoundingClientRect().width ?? 0;
+
+      if (loopWidth && marquee.scrollLeft >= loopWidth) {
+        marquee.scrollLeft -= loopWidth;
+      }
+
+      marquee.scrollLeft += elapsed * 0.03;
+      frameId = requestAnimationFrame(move);
+    };
+
+    frameId = requestAnimationFrame(move);
+    return () => cancelAnimationFrame(frameId);
+  }, [isDragging, isHovered, paused]);
+
+  const startDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (
+      event.target instanceof Element &&
+      event.target.closest('a, button, input, select, textarea')
+    )
+      return;
+
+    const marquee = windowRef.current;
+    if (!marquee) return;
+
+    dragRef.current = {
+      startX: event.clientX,
+      startScrollLeft: marquee.scrollLeft,
+      hasMoved: false,
+    };
+  };
+
+  const drag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const marquee = windowRef.current;
+    const start = dragRef.current;
+    if (!marquee || !start) return;
+
+    const distance = event.clientX - start.startX;
+    if (!start.hasMoved && Math.abs(distance) < 6) return;
+
+    if (!start.hasMoved) {
+      start.hasMoved = true;
+      marquee.setPointerCapture(event.pointerId);
+      setIsDragging(true);
+    }
+
+    marquee.scrollLeft = start.startScrollLeft - distance;
+  };
+
+  const endDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const marquee = windowRef.current;
+    const hasMoved = dragRef.current?.hasMoved;
+    if (hasMoved && marquee?.hasPointerCapture(event.pointerId)) {
+      marquee.releasePointerCapture(event.pointerId);
+    }
+    dragRef.current = null;
+    if (hasMoved) setIsDragging(false);
+  };
+
   return (
     <section
       id="recommendations"
@@ -157,7 +240,17 @@ export function Recommendations() {
           </a>
         </div>
       </div>
-      <div className={`marquee-window ${paused ? 'paused' : ''}`}>
+      <div
+        ref={windowRef}
+        className={`marquee-window ${paused ? 'paused' : ''} ${isDragging ? 'is-dragging' : ''}`}
+        aria-label="Recommendations carousel. Drag or scroll horizontally to browse."
+        onPointerDown={startDrag}
+        onPointerMove={drag}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onPointerEnter={() => setIsHovered(true)}
+        onPointerLeave={() => setIsHovered(false)}
+      >
         <div className="marquee-track">
           <div className="marquee-group">
             {recommendations.map((item) => (
