@@ -187,6 +187,7 @@ h1 span {
   position: relative;
   width: min(100%, 330px);
   height: 190px;
+  flex-shrink: 0;
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
@@ -198,10 +199,11 @@ h1 span {
   display: block;
   width: 140%;
   max-width: none;
-  height: auto;
+  height: 100%;
   left: -20%;
-  top: 50%;
-  transform: translateY(-33%);
+  top: 0;
+  object-fit: cover;
+  object-position: 50% 20%;
 }
 .portrait::after {
   content: '';
@@ -337,41 +339,6 @@ h1 span {
   font-weight: 500;
   color: #dce3ee;
 }
-.focus-note {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  color: #b9c9e2;
-  font-size: 14px;
-  line-height: 1.7;
-  border-left: 2px solid #6a92d6;
-  padding: 9px 0 9px 16px;
-  margin: 25px 0 0;
-}
-.impact-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  margin-top: 35px;
-  padding: 24px 0;
-  gap: 16px;
-}
-.impact-grid strong {
-  display: block;
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: -0.06em;
-  color: #dce8ff;
-  margin-bottom: 8px;
-  white-space: nowrap;
-}
-.impact-grid p {
-  font-size: 12px;
-  line-height: 1.5;
-  margin: 0;
-  color: var(--muted-foreground);
-}
 .experience-list {
   display: flex;
   flex-direction: column;
@@ -471,57 +438,6 @@ h1 span {
 }
 .text-link:hover svg {
   transform: translate(3px, -3px);
-}
-.work-card {
-  padding: 24px;
-  margin-bottom: 14px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: linear-gradient(120deg, #1c243180, #171b2140);
-  transition:
-    border-color 0.2s,
-    transform 0.2s;
-}
-.work-card:hover {
-  border-color: #536c95;
-  transform: translateY(-2px);
-}
-.work-topline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 19px;
-}
-.work-topline svg {
-  color: var(--primary);
-  width: 23px;
-  height: 23px;
-}
-.work-topline span {
-  font-family: monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #8f9db3;
-}
-.work-card h3 {
-  margin: 0 0 12px;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: -0.025em;
-}
-.work-card p {
-  margin: 0 0 18px;
-  color: var(--muted-foreground);
-  font-size: 15px;
-  line-height: 1.75;
-}
-.work-outcome {
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
-  font-size: 13px;
-  color: #c5d7f7;
 }
 .skill-group {
   display: grid;
@@ -813,12 +729,6 @@ footer a {
   h1 {
     font-size: 49px;
   }
-  .impact-grid {
-    gap: 8px;
-  }
-  .impact-grid strong {
-    font-size: 25px;
-  }
 }
 @media (max-width: 760px) {
   .site-wrap {
@@ -919,9 +829,6 @@ footer a {
   }
   .recommendation-heading {
     flex-direction: column;
-  }
-  .impact-grid strong {
-    font-size: 24px;
   }
   .skill-group {
     grid-template-columns: 1fr;

@@ -4,10 +4,6 @@ import {
   ArrowUpRight,
   CodeXml,
   Mail,
-  MapPin,
-  Plane,
-  Cloud,
-  Layers3,
   Award,
 } from 'lucide-react';
 import { Navigation, Recommendations } from './portfolio-interactions';
@@ -104,34 +100,32 @@ export default function Home() {
         Skip to content
       </a>
       <div className="site-wrap" id="top">
-        <header className="topbar">
-          <a href="#top" className="brand" aria-label="Udara Sandesha home">
-            <span className="monogram">us.</span>
-            <span>Personal portfolio</span>
-          </a>
-          <span className="location">
-            <MapPin aria-hidden="true" />
-            Linz, Austria
-          </span>
-        </header>
         <div className="portfolio-grid">
           <aside className="profile" aria-label="Introduction">
-            <p className="eyebrow">Software & systems</p>
             <h1>
-              Udara<span>Sandesha.</span>
+              Udara<span>De Silva</span>
             </h1>
             <p className="role">Software Engineer</p>
             <p className="intro">
               I build reliable software that makes complex things work simply.
             </p>
             <div className="portrait">
-              <Image
-                src="/images/udara-sandesha.jpg"
-                width={4272}
-                height={4272}
-                alt="Udara Sandesha wearing glasses and a blue shirt"
-                fetchPriority="high"
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet="/images/portrait/udara-480.webp 480w, /images/portrait/udara-960.webp 960w, /images/portrait/udara-1440.webp 1440w, /images/portrait/udara-1920.webp 1920w"
+                  sizes="(max-width: 498px) calc(140vw - 53.2px), (max-width: 760px) 630px, 462px"
+                />
+                <Image
+                  src="/images/portrait/udara-960.webp"
+                  width={960}
+                  height={960}
+                  alt="Udara Sandesha wearing glasses and a blue shirt"
+                  loading="eager"
+                  fetchPriority="high"
+                  unoptimized
+                />
+              </picture>
               <span className="portrait-label">C# · .NET · Cloud</span>
             </div>
             <Navigation />
@@ -194,37 +188,8 @@ export default function Home() {
               <p className="body-copy">
                 Today, I’m a{' '}
                 <strong>Software Engineer at IGS Systemmanagement</strong>,
-                while pursuing a master’s at IT:U. Previously, I helped teams at
-                Moresand, Zero Friction, and Calcey ship better software.
+                while pursuing a master’s at IT:U.
               </p>
-              <p className="focus-note">
-                From the architecture behind a feature to the production issue
-                at 2 a.m. — I enjoy connecting the dots.
-              </p>
-              <div className="impact-grid">
-                <div>
-                  <strong>3M/day</strong>
-                  <p>
-                    Flight searches on
-                    <br />a platform I helped build
-                  </p>
-                </div>
-                <div>
-                  <strong>15s → 7s</strong>
-                  <p>
-                    Average response time
-                    <br />I helped improve
-                  </p>
-                </div>
-                <div>
-                  <strong>70+</strong>
-                  <p>
-                    Dynamic screens in
-                    <br />
-                    an enterprise ERP
-                  </p>
-                </div>
-              </div>
             </section>
             <section id="experience" className="content-section">
               <Heading n="02">Experience</Heading>
@@ -258,66 +223,8 @@ export default function Home() {
                 View full résumé <ArrowUpRight aria-hidden="true" />
               </a>
             </section>
-            <section id="work" className="content-section">
-              <Heading n="03">Selected work</Heading>
-              <article className="work-card">
-                <div className="work-topline">
-                  <Plane aria-hidden="true" />
-                  <span>Moresand · Travel technology</span>
-                </div>
-                <h3>Faster flight search. At scale.</h3>
-                <p>
-                  Performance improvements to the Worldairfares backend, from
-                  serialization to database queries, while maintaining the
-                  reliability of a high-volume flight search platform.
-                </p>
-                <div className="work-outcome">
-                  Contributed to reducing average response times from 15 to 7
-                  seconds.
-                </div>
-              </article>
-              <article className="work-card">
-                <div className="work-topline">
-                  <Cloud aria-hidden="true" />
-                  <span>Calcey · Sports technology</span>
-                </div>
-                <h3>A cloud foundation for AiSCOUT.</h3>
-                <p>
-                  Event-driven APIs and background services for a football
-                  talent scouting application. Containerized services on AWS and
-                  introduced repeatable infrastructure with AWS CDK.
-                </p>
-                <div className="work-outcome">
-                  Clean Architecture · Event-driven services · Infrastructure as
-                  code
-                </div>
-              </article>
-              <article className="work-card">
-                <div className="work-topline">
-                  <Layers3 aria-hidden="true" />
-                  <span>Zero Friction · Energy technology</span>
-                </div>
-                <h3>Evolving a heat platform.</h3>
-                <p>
-                  Backend development, API improvements, and a React-to-Blazor
-                  migration for ZeroFriction Heat, supported by automated tests
-                  and background processing.
-                </p>
-                <div className="work-outcome">
-                  API optimization · Frontend migration · Automated testing
-                </div>
-              </article>
-              <a
-                className="text-link"
-                href="https://github.com/UdaraSandesha"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Explore my code on GitHub <ArrowUpRight aria-hidden="true" />
-              </a>
-            </section>
             <section id="toolkit" className="content-section">
-              <Heading n="04">Technical toolkit</Heading>
+              <Heading n="03">Technical toolkit</Heading>
               {[
                 {
                   name: 'Backend',
@@ -364,7 +271,7 @@ export default function Home() {
               ))}
             </section>
             <section id="education" className="content-section">
-              <Heading n="05">Education</Heading>
+              <Heading n="04">Education</Heading>
               <article className="education">
                 <span className="job-meta">2025 — PRESENT</span>
                 <h3>MSc in Interdisciplinary Computing</h3>

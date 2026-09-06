@@ -9,8 +9,11 @@
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build --webpack",
     "start": "next dev --hostname 127.0.0.1",
-    "lint": "oxlint app lib next.config.ts postcss.config.mjs",
-    "format": "oxfmt"
+    "lint": "oxlint app lib scripts next.config.ts postcss.config.mjs",
+    "format": "oxfmt",
+    "prepare:portrait": "node scripts/prepare-portrait.mjs",
+    "prebuild": "npm run prepare:portrait",
+    "predev": "npm run prepare:portrait"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
@@ -47,6 +50,7 @@
     "oxfmt": "0.61.0",
     "oxlint": "1.76.0",
     "oxlint-tsgolint": "7.0.2001",
+    "sharp": "^0.34.5",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vite": "8.0.13",

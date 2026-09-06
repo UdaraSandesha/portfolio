@@ -13,7 +13,6 @@ import { recommendations } from './recommendations';
 const sections = [
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
-  { id: 'work', label: 'Selected work' },
   { id: 'education', label: 'Education' },
   { id: 'recommendations', label: 'Kind words' },
 ];
@@ -123,7 +122,7 @@ export function Recommendations() {
       className="recommendations"
       aria-label="Recommendations"
     >
-      <p className="eyebrow">06 / Recommendations</p>
+      <p className="eyebrow">05 / Recommendations</p>
       <div className="recommendation-heading">
         <div>
           <h2>Good code. Great people.</h2>
