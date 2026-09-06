@@ -15,7 +15,7 @@ npm run dev
 npm run build
 ```
 
-The website is statically exported to `out/`, ready for a static host. No environment variables or backend services are required.
+The website runs as a standard Next.js deployment on Vercel. No environment variables or backend services are required.
 
 ## Content
 
