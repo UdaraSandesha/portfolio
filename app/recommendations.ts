@@ -1,8 +1,14 @@
 export const recommendations = [
   {
     name: 'Rubén Rubio Rey',
-    initials: 'RR',
-    role: 'CTO · Ex-Amazon',
+    role: 'CTO | Ex-Amazon',
+    avatar: {
+      src: '/images/recommendations/ruben-rubio-rey.png',
+      width: 758,
+      height: 405,
+      x: 13,
+      y: 12,
+    },
     date: 'April 14, 2026',
     relationship: 'Senior colleague',
     excerpt:
@@ -19,8 +25,14 @@ Udara combines strong technical skills with effective communication and a real s
   },
   {
     name: 'Naresh Maheswaran',
-    initials: 'NM',
-    role: 'Tech Leader · Product Owner',
+    role: 'Innovative Tech Leader | 15+ years of excellence | Product Owner | API Integration Specialist | 1500 Bookings/Day & £20M Revenue | Tech Solutions Architect | Cross Functional Team Leader',
+    avatar: {
+      src: '/images/recommendations/naresh-maheswaran.png',
+      width: 770,
+      height: 407,
+      x: 15,
+      y: 12,
+    },
     date: 'January 7, 2026',
     relationship: 'Direct manager',
     excerpt:
@@ -35,8 +47,14 @@ Overall, Udara is a highly capable Senior Software Engineer who combines strong 
   },
   {
     name: 'Leandro Ostyn',
-    initials: 'LO',
-    role: 'Founder of CodeFix',
+    role: 'Founder of CodeFix ||Ai driven apps and website creator',
+    avatar: {
+      src: '/images/recommendations/leandro-ostyn.jpeg',
+      width: 756,
+      height: 283,
+      x: 13,
+      y: 11,
+    },
     date: 'November 20, 2025',
     relationship: 'Direct manager',
     excerpt:
@@ -49,8 +67,14 @@ I highly recommend Udara for any development role. He is reliable, diligent, and
   },
   {
     name: 'Aaron Fernando',
-    initials: 'AF',
-    role: '.NET Developer',
+    role: ".Net developer | Blazor | Cosmos Db | Azure | EF CORE | MSSQL | Living in the Microsoft Cloud (because it's always sunny there)",
+    avatar: {
+      src: '/images/recommendations/aaron-fernando.jpeg',
+      width: 748,
+      height: 281,
+      x: 9,
+      y: 10,
+    },
     date: 'August 11, 2024',
     relationship: 'Colleague',
     excerpt:
@@ -63,8 +87,14 @@ Great team player , I wish him nothing but the best , any team would be so lucky
   },
   {
     name: 'Akila Udayanga',
-    initials: 'AU',
-    role: 'Associate Technical Lead',
+    role: 'Associate Technical Lead | .NET | AWS | GenAI',
+    avatar: {
+      src: '/images/recommendations/akila-udayanga.jpeg',
+      width: 750,
+      height: 316,
+      x: 12,
+      y: 12,
+    },
     date: 'February 28, 2024',
     relationship: 'Teammate',
     excerpt:
@@ -77,8 +107,14 @@ Udara is not just technically skilled but also a joy to work with. He brings ent
   },
   {
     name: 'Asela Sellahewa',
-    initials: 'AS',
-    role: 'Microsoft Technology Specialist',
+    role: 'Public Servant | Microsoft Technology Specialist | Data & Integration Expert | Architecting Resilient Software Solutions',
+    avatar: {
+      src: '/images/recommendations/asela-sellahewa.jpeg',
+      width: 762,
+      height: 232,
+      x: 13,
+      y: 14,
+    },
     date: 'July 21, 2023',
     relationship: 'Direct manager',
     excerpt:
@@ -87,8 +123,14 @@ Udara is not just technically skilled but also a joy to work with. He brings ent
   },
   {
     name: 'Frank Violi',
-    initials: 'FV',
     role: 'Head of Operations',
+    avatar: {
+      src: '/images/recommendations/frank-violi.jpeg',
+      width: 754,
+      height: 234,
+      x: 13,
+      y: 14,
+    },
     date: 'June 2, 2021',
     relationship: 'Direct manager',
     excerpt:
@@ -97,8 +139,14 @@ Udara is not just technically skilled but also a joy to work with. He brings ent
   },
   {
     name: 'Sanath Chathuranga',
-    initials: 'SC',
-    role: 'Consultancy collaborator',
+    role: 'Question everything, Build anything',
+    avatar: {
+      src: '/images/recommendations/sanath-chathuranga.png',
+      width: 755,
+      height: 373,
+      x: 9,
+      y: 15,
+    },
     date: 'October 30, 2020',
     relationship: 'Studied together',
     excerpt:

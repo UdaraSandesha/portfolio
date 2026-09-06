@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { ArrowUpRight, Pause, Play, Quote } from 'lucide-react';
 import {
   Dialog,
@@ -48,6 +49,27 @@ export function Navigation() {
     </nav>
   );
 }
+function ProfilePhoto({ item }: { item: (typeof recommendations)[number] }) {
+  // Preserve the exact screenshot pixels; the circular viewport reveals only its avatar.
+  return (
+    <span className="recommendation-avatar">
+      <Image
+        src={item.avatar.src}
+        alt={`${item.name} profile photo`}
+        width={item.avatar.width}
+        height={item.avatar.height}
+        loading="lazy"
+        unoptimized
+        style={{
+          width: item.avatar.width,
+          height: item.avatar.height,
+          left: -item.avatar.x,
+          top: -item.avatar.y,
+        }}
+      />
+    </span>
+  );
+}
 function QuoteCard({
   item,
   duplicate = false,
@@ -60,9 +82,7 @@ function QuoteCard({
       <Quote className="quote-mark" aria-hidden="true" />
       <blockquote>“{item.excerpt}”</blockquote>
       <div className="quote-person">
-        <span className="avatar-initials" aria-hidden="true">
-          {item.initials}
-        </span>
+        <ProfilePhoto item={item} />
         <div>
           <strong>{item.name}</strong>
           <p>{item.role}</p>
@@ -77,10 +97,15 @@ function QuoteCard({
           Read full recommendation <ArrowUpRight aria-hidden="true" />
         </DialogTrigger>
         <DialogContent className="quote-modal sm:max-w-2xl">
-          <DialogTitle className="text-xl">{item.name}</DialogTitle>
-          <DialogDescription>
-            {item.role} · {item.relationship}
-          </DialogDescription>
+          <div className="quote-person quote-modal-person">
+            <ProfilePhoto item={item} />
+            <div>
+              <DialogTitle className="text-xl">{item.name}</DialogTitle>
+              <DialogDescription className="mt-2">
+                {item.role}
+              </DialogDescription>
+            </div>
+          </div>
           <blockquote className="quote-modal-text">{item.text}</blockquote>
           <div className="quote-modal-source">
             LinkedIn recommendation · {item.date}

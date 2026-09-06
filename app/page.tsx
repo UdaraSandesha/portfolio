@@ -127,8 +127,8 @@ export default function Home() {
             <div className="portrait">
               <Image
                 src="/images/udara-sandesha.jpg"
-                width="1600"
-                height="1600"
+                width={4272}
+                height={4272}
                 alt="Udara Sandesha wearing glasses and a blue shirt"
                 fetchPriority="high"
               />
