@@ -180,10 +180,12 @@ export default function Home() {
                 sports, finance, and enterprise operations.
               </p>
               <p className="body-copy">
-                My core is <strong>C# and .NET</strong>. My work spans scalable
-                APIs, cloud infrastructure, and the interfaces people use every
-                day. I care about maintainable code, dependable systems, and
-                taking ownership from the first idea to production.
+                My core is <strong>C# and .NET</strong>, and I now work
+                extensively with <strong>React and agentic engineering</strong>.
+                My work spans scalable APIs, cloud infrastructure, and the
+                interfaces people use every day. I care about maintainable code,
+                dependable systems, and taking ownership from the first idea to
+                production.
               </p>
               <p className="body-copy">
                 Today, I’m a{' '}
