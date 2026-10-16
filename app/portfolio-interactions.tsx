@@ -13,9 +13,40 @@ import { recommendations } from './recommendations';
 const sections = [
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
   { id: 'education', label: 'Education' },
   { id: 'recommendations', label: 'Kind words' },
 ];
+export function CursorGlow() {
+  const glowRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const glow = glowRef.current;
+    if (
+      !glow ||
+      !window.matchMedia(
+        '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)',
+      ).matches
+    )
+      return;
+
+    let frameId = 0;
+    const move = (event: PointerEvent) => {
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        glow.style.setProperty('--x', `${event.clientX}px`);
+        glow.style.setProperty('--y', `${event.clientY}px`);
+        glow.dataset.active = '';
+      });
+    };
+
+    window.addEventListener('pointermove', move, { passive: true });
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('pointermove', move);
+    };
+  }, []);
+  return <div ref={glowRef} className="cursor-glow" aria-hidden="true" />;
+}
 export function Navigation() {
   const [active, setActive] = useState('about');
   useEffect(() => {
@@ -208,7 +239,9 @@ export function Recommendations() {
       <p className="eyebrow">05 / Recommendations</p>
       <div className="recommendation-heading">
         <div>
-          <h2>Good code. Great people.</h2>
+          <h2>
+            Good code. <em>Great people.</em>
+          </h2>
           <p>A few words from the people I’ve worked with.</p>
         </div>
         <div className="recommendation-actions">
